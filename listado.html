@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .nav-link { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #0066cc; font-weight: bold; }
+        button { padding: 10px 15px; margin-right: 10px; margin-bottom: 20px; cursor: pointer; border: none; background-color: #007bff; color: white; border-radius: 5px;}
+        button:hover { background-color: #0056b3; }
+        .item-bloque {
+            border: 1px solid #999;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            width: 250px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="nav-link">⬅ Volver al Inicio</a>
+
+    <h2>Listado de Elementos y Filtrado</h2>
+    
+    <button id="btn-todos">Mostrar Todos</button>
+    <button id="btn-frutas">Mostrar Solo Frutas</button>
+
+    <div id="contenedor-lista"></div>
+
+    <script>
+        const elementos = [
+            { nombre: "Manzana", tipo: "fruta" },
+            { nombre: "Silla", tipo: "mueble" },
+            { nombre: "Banana", tipo: "fruta" },
+            { nombre: "Mesa", tipo: "mueble" },
+            { nombre: "Naranja", tipo: "fruta" },
+            { nombre: "Sillón", tipo: "mueble" }
+        ];
+
+        const contenedor = document.getElementById('contenedor-lista');
+
+        function mostrarElementos(arreglo) {
+            contenedor.innerHTML = "";
+            arreglo.forEach(function(item) {
+                const div = document.createElement('div');
+                div.classList.add('item-bloque');
+                div.textContent = item.nombre + " (" + item.tipo + ")";
+                contenedor.appendChild(div);
+            });
+        }
+
+        mostrarElementos(elementos);
+
+        document.getElementById('btn-todos').addEventListener('click', function() {
+            mostrarElementos(elementos);
+        });
+
+        document.getElementById('btn-frutas').addEventListener('click', function() {
+            const soloFrutas = elementos.filter(function(item) {
+                return item.tipo === "fruta";
+            });
+            mostrarElementos(soloFrutas);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destacados</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .nav-link { display: inline-block; margin-bottom: 20px; text-decoration: none; color: #0066cc; font-weight: bold; }
+        .tarjetas-container { display: flex; gap: 15px; flex-wrap: wrap; }
+        .tarjeta { 
+            border: 2px solid #ccc; 
+            padding: 20px; 
+            width: 150px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            text-align: center;
+            transition: 0.3s;
+        }
+        .tarjeta.seleccionada {
+            border-color: #28a745;
+            background-color: #d4edda;
+            font-weight: bold;
+        }
+        .contador-texto { margin-top: 20px; font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="nav-link">⬅ Volver al Inicio</a>
+    
+    <h2>Tarjetas Seleccionables (Juegos)</h2>
+    
+    <div class="tarjetas-container">
+        <div class="tarjeta">Mario Bros</div>
+        <div class="tarjeta">Zelda</div>
+        <div class="tarjeta">Minecraft</div>
+        <div class="tarjeta">Tetris</div>
+    </div>
+
+    <p class="contador-texto">Tarjetas seleccionadas: <span id="contador">0</span></p>
+
+    <script>
+        const tarjetas = document.querySelectorAll('.tarjeta');
+        const spanContador = document.getElementById('contador');
+
+        tarjetas.forEach(function(tarjeta) {
+            tarjeta.addEventListener('click', function() {
+                this.classList.toggle('seleccionada');
+                const seleccionadas = document.querySelectorAll('.tarjeta.seleccionada').length;
+                spanContador.textContent = seleccionadas;
+            });
+        });
+    </script>
+</body>
+</html>

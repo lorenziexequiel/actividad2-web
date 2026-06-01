@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Meriendas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .contenedor {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #0066cc;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="destacados.html">Ir a Destacados</a>
+        <a href="listado.html">Ir a Listado</a>
+    </nav>
+
+    <div class="contenedor">
+        <h1>Nuestras Meriendas</h1>
+        
+        <ul id="lista-meriendas"></ul>
+
+        <button id="btn-contar">¿Cuántas opciones hay?</button>
+        <p id="resultado-conteo"></p>
+    </div>
+
+    <script>
+        const meriendas = [
+            "Mate con facturas", 
+            "Café con tostadas", 
+            "Chocolatada con pepas", 
+            "Té con criollitos", 
+            "Yogur con cereales"
+        ];
+
+        const listaElemento = document.getElementById("lista-meriendas");
+        
+        meriendas.forEach(function(merienda) {
+            const li = document.createElement("li");
+            li.textContent = merienda;
+            listaElemento.appendChild(li);
+        });
+
+        const btnContar = document.getElementById("btn-contar");
+        const resultadoConteo = document.getElementById("resultado-conteo");
+
+        btnContar.addEventListener("click", function() {
+            resultadoConteo.textContent = "El menú tiene un total de " + meriendas.length + " opciones deliciosas.";
+        });
+    </script>
+
+</body>
+</html>
